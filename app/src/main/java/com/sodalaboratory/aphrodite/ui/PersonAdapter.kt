@@ -33,12 +33,6 @@ class PersonAdapter(val personList: MutableList<Person>) :
         holder.personName.text = person.name
         holder.personBirthday.text = person.birthday
         Glide.with(AphroditeApplication.context).load(R.drawable.outline_account_circle_24).into(holder.personImage)
-//        holder.personImage.setImageResource(R.drawable.outline_account_circle_24)
-//         加载图片
-//        if (person.imagePath != "") // 不为 ""，加载已经设置好的图片
-//            Glide.with(AphroditeApplication.context).load(person.imagePath).into(holder.personImage)
-//        else // 为""，加载资源
-//            Glide.with(AphroditeApplication.context).load(R.drawable.outline_account_circle_24).into(holder.personImage)
     }
 
     override fun getItemCount() = personList.size

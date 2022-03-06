@@ -10,38 +10,26 @@ import com.sodalaboratory.aphrodite.utils.showToast
 import kotlin.concurrent.thread
 
 class PersonListViewModel : ViewModel() {
-    val personListLiveData = MutableLiveData<MutableList<Person>>()
-    var personCount =  0
+    var personCountLiveData = MutableLiveData<Int>()
     private lateinit var personDao: PersonDao
+    private lateinit var personList: MutableList<Person>
     // List 初始化
     init {
-        personListLiveData.value = mutableListOf()
+        personCountLiveData.value = 0
         thread {
             personDao = AphroditeAppDatabase.getDatabase().personDao()
-            personListLiveData.postValue(personDao.getAll())
-
+            personList = personDao.getAll()
+            personCountLiveData.postValue(personList.size)
         }
     }
 
     // 加入人物到数据库中
     fun addPerson(person: Person) {
-        val persons = personListLiveData.value ?: mutableListOf()
-        // 添加人物
+        personList.add(person)
         thread {
-            persons.add(person)
-            personListLiveData.postValue(persons)
             personDao.insertPerson(person)
+            personCountLiveData.postValue(personList.size)
         }
-        "添加成功".showToast()
-    }
 
-    // 添加默认人物
-    fun addDefaultPerson() {
-        addPerson(Person())
-
-    }
-
-    // 清除所有人物
-    fun clearAphroditePersonList() {
     }
 }

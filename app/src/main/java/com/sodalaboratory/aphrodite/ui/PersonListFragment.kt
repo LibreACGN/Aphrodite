@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.*
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,31 +39,28 @@ class PersonListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var personList = mutableListOf<Person>()
 
         // 设置 RecyclerView 布局
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
         val layoutManager = LinearLayoutManager(AphroditeApplication.context)
         personListRecyclerView.layoutManager = layoutManager
         adapter = PersonAdapter(personList)
-//        adapter = PersonAdapter(personList)
         personListRecyclerView.adapter = adapter
 
         // 绑定监控人数变化
-        personListViewModel.personListLiveData.observe(viewLifecycleOwner) {
-            // 通知刷新列表
-            personListViewModel.personCount++
-            personList = personListViewModel.personListLiveData.value!!
-            adapter.notifyItemInserted(personList.size - 1)
+        personListViewModel.personCountLiveData.observe(viewLifecycleOwner) {
+            // 增加
+            adapter.notifyItemInserted(0)
         }
     }
 
-    // 顶部工具栏
+    // 顶部工具栏加载
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.actionbar, menu)
     }
 
+    // 工具栏按钮 + 点击事件
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.aphrodite_add -> {

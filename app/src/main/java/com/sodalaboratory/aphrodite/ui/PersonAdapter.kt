@@ -17,9 +17,9 @@ class PersonAdapter(val personList: MutableList<Person>) :
     RecyclerView.Adapter<PersonAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val personImage = view.findViewById<ImageView>(R.id.person_icon_image_view)
-        val personName = view.findViewById<TextView>(R.id.person_name_text_view)
-        val personBirthday = view.findViewById<TextView>(R.id.person_birthday_text_view)
+        val personImage: ImageView = view.findViewById<ImageView>(R.id.person_icon_image_view)
+        val personName: TextView = view.findViewById<TextView>(R.id.person_name_text_view)
+        val personBirthday: TextView = view.findViewById<TextView>(R.id.person_birthday_text_view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,7 +32,7 @@ class PersonAdapter(val personList: MutableList<Person>) :
         val person = personList[position]
         holder.personName.text = person.name
         holder.personBirthday.text = person.birthday
-        Glide.with(AphroditeApplication.context).load(R.drawable.outline_account_circle_24).into(holder.personImage)
+        Glide.with(AphroditeApplication.context).load(R.drawable.person_add_24).into(holder.personImage)
     }
 
     override fun getItemCount() = personList.size

@@ -14,7 +14,6 @@ import com.sodalaboratory.aphrodite.data.model.Person
 import com.sodalaboratory.aphrodite.utils.LogUtil
 import com.sodalaboratory.aphrodite.utils.showToast
 
-private const val TAG = "TEST"
 class PersonListFragment : Fragment() {
     private val personListViewModel: PersonListViewModel by lazy {
         ViewModelProvider(this)[PersonListViewModel::class.java]
@@ -41,16 +40,17 @@ class PersonListFragment : Fragment() {
 
         // 设置 RecyclerView 布局
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
-        val layoutManager = LinearLayoutManager(activity)
+        val layoutManager = LinearLayoutManager(AphroditeApplication.context)
         personListRecyclerView.layoutManager = layoutManager
         adapter = PersonAdapter(personListViewModel.personList)
         personListRecyclerView.adapter = adapter
-        Log.d("DEBUG", "adapter set ok")
+        LogUtil.d("DEBUG", "adapter set ok")
 
         // 绑定监控人数变化
         personListViewModel.personCountLiveData.observe(viewLifecycleOwner) {
             // 增加
-            adapter.notifyItemInserted(0)
+//            adapter.notifyItemInserted(0)
+            LogUtil.d("DEBUG", "adapter size ${adapter.itemCount}")
             LogUtil.d("DEBUG", "observe data changed")
         }
     }
@@ -66,6 +66,7 @@ class PersonListFragment : Fragment() {
         when (item.itemId) {
             R.id.aphrodite_add -> {
                 personListViewModel.addPerson(Person())
+                LogUtil.d("DEBUG", "add person")
             }
         }
         return true

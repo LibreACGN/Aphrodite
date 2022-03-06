@@ -15,8 +15,8 @@ interface PersonDao {
     @Query("SELECT * FROM Person")
     fun getAll(): MutableList<Person>
 
-    @Query("SELECT * FROM Person WHERE uid = :uid")
-    fun getUserByUID(uid: Int): Person?
+    @Query("SELECT * FROM Person WHERE name = :name")
+    fun getUserByName(name: String): Person?
 
     @Insert
     fun insertPerson(person: Person)

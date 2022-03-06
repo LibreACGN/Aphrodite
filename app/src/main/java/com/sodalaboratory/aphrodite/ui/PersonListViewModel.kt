@@ -7,21 +7,21 @@ import com.sodalaboratory.aphrodite.data.db.AphroditeAppDatabase
 import com.sodalaboratory.aphrodite.data.model.Person
 import com.sodalaboratory.aphrodite.data.model.PersonDao
 import com.sodalaboratory.aphrodite.utils.LogUtil
-import com.sodalaboratory.aphrodite.utils.showToast
 import kotlin.concurrent.thread
 
 class PersonListViewModel : ViewModel() {
     var personCountLiveData = MutableLiveData<Int>()
     private lateinit var personDao: PersonDao
     var personList: MutableList<Person> = mutableListOf()
-    // List 初始化
     init {
         personCountLiveData.value = 0
         thread {
             personDao = AphroditeAppDatabase.getDatabase().personDao()
-            personList = personDao.getAll()
+            val persons = personDao.getAll()
+            for (person in persons) personList.add(person)
             personCountLiveData.postValue(personList.size)
             LogUtil.d("DEBUG", "init ok, init personList size: ${personList.size}")
+            LogUtil.d("DEBUG", "init ok, init personCount size: ${personCountLiveData.value}")
         }
     }
 
@@ -31,7 +31,7 @@ class PersonListViewModel : ViewModel() {
         thread {
             personDao.insertPerson(person)
             personCountLiveData.postValue(personList.size)
-            LogUtil.d("DEBUG", "add person ok, init personList size: ${personList.size}")
+            LogUtil.d("DEBUG", "add person ok, current personList size: ${personList.size}")
         }
 
     }

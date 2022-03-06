@@ -42,7 +42,7 @@ class PersonListFragment : Fragment() {
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
         val layoutManager = LinearLayoutManager(AphroditeApplication.context)
         personListRecyclerView.layoutManager = layoutManager
-        adapter = PersonAdapter(personListViewModel.personList)
+        adapter = PersonAdapter(view.context, personListViewModel.personList)
         personListRecyclerView.adapter = adapter
         LogUtil.d("DEBUG", "adapter set ok")
 

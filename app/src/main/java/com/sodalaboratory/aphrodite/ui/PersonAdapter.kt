@@ -1,5 +1,6 @@
 package com.sodalaboratory.aphrodite.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ import com.sodalaboratory.aphrodite.data.model.Person
 
 
 // RecyclerView Adapter
-class PersonAdapter(val personList: MutableList<Person>) :
+class PersonAdapter(val context: Context, val personList: MutableList<Person>) :
     RecyclerView.Adapter<PersonAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -32,7 +33,8 @@ class PersonAdapter(val personList: MutableList<Person>) :
         val person = personList[position]
         holder.personName.text = person.name
         holder.personBirthday.text = person.birthday
-        Glide.with(AphroditeApplication.context).load(R.drawable.person_add_24).into(holder.personImage)
+        holder.personImage.setImageResource(R.drawable.person_add_24)
+//        Glide.with(context).load(R.drawable.plus).into(holder.personImage)
     }
 
     override fun getItemCount() = personList.size

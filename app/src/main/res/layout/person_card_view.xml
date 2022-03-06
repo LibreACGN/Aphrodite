@@ -4,20 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="8dp"
     android:layout_margin="5dp"
     android:orientation="horizontal"
     app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="8dp"
+            android:elevation="5dp">
         <ImageView
             android:id="@+id/person_icon_image_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"/>
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,24 +35,21 @@
                 android:id="@+id/person_name_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                tools:text="有坂 真白"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
+                tools:text="有坂  真白"
                 android:text="@string/person_name_hint" />
 
             <TextView
                 android:id="@+id/person_birthday_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20sp"
                 tools:text="Feb 14, Friday"
                 android:text="@string/person_name_hint" />
         </LinearLayout>
     </LinearLayout>
-
-
-
 </com.google.android.material.card.MaterialCardView>

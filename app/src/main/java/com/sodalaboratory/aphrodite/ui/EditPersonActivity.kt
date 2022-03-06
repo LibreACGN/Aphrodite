@@ -83,7 +83,7 @@ class EditPersonActivity : AppCompatActivity() {
                         LogUtil.d("exist", requestCode.toString())
                         FileUtil.saveDefaultImage(imageUri.path!!)
                         // 加载暂存的图片
-                        Glide.with(this).load(FileUtil.getDefaultImagePath()).into(findViewById(R.id.person_image_preview))
+                        Glide.with(this).load(imageUri.path).into(findViewById(R.id.person_image_preview))
                         isImageUriSet = true
                     }
                 }

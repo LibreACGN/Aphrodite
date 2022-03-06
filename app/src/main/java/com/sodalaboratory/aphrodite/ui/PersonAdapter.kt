@@ -37,7 +37,7 @@ class PersonAdapter(val context: Context, val personList: MutableList<Person>) :
             // 无图片，加载默认
             holder.personImage.setImageResource(R.drawable.outline_account_circle_24)
         else // 有图片 加载图片
-            Glide.with(context).load(R.drawable.plus).into(holder.personImage)
+            Glide.with(context).load(person.imagePath).into(holder.personImage)
     }
 
     override fun getItemCount() = personList.size

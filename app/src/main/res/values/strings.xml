@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">Aphrodite</string>
     <string name="app_action_add">add</string>
+    <string name="select_button_text">select image</string>
     <string name="person_name_hint">input name here</string>
+    <string name="person_birthday_hint">input birthday here</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

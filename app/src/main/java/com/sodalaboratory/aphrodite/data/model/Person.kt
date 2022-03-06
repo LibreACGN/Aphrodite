@@ -19,7 +19,6 @@ import com.sodalaboratory.aphrodite.R
  */
 @Entity
 data class Person(
-    @ColumnInfo(name = "uid") var uid: Int = 0,
     @ColumnInfo(name = "name") var name: String =
         AphroditeApplication.context.getString(R.string.person_name_hint),
     @ColumnInfo(name = "birthday") var birthday: String = "Feb. 12",

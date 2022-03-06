@@ -33,8 +33,11 @@ class PersonAdapter(val context: Context, val personList: MutableList<Person>) :
         val person = personList[position]
         holder.personName.text = person.name
         holder.personBirthday.text = person.birthday
-        holder.personImage.setImageResource(R.drawable.person_add_24)
-//        Glide.with(context).load(R.drawable.plus).into(holder.personImage)
+        if (person.imagePath == "")
+            // 无图片，加载默认
+            holder.personImage.setImageResource(R.drawable.outline_account_circle_24)
+        else // 有图片 加载图片
+            Glide.with(context).load(R.drawable.plus).into(holder.personImage)
     }
 
     override fun getItemCount() = personList.size

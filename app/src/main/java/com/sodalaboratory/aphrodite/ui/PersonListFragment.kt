@@ -1,13 +1,13 @@
 package com.sodalaboratory.aphrodite.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
 import com.sodalaboratory.aphrodite.AphroditeApplication
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.data.model.Person
@@ -38,6 +38,10 @@ class PersonListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 设置顶部 toolbar
+        val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
         // 设置 RecyclerView 布局
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
         val layoutManager = LinearLayoutManager(AphroditeApplication.context)
@@ -49,7 +53,7 @@ class PersonListFragment : Fragment() {
         // 绑定监控人数变化
         personListViewModel.personCountLiveData.observe(viewLifecycleOwner) {
             // 增加
-//            adapter.notifyItemInserted(0)
+            adapter.notifyItemInserted(0)
             LogUtil.d("DEBUG", "adapter size ${adapter.itemCount}")
             LogUtil.d("DEBUG", "observe data changed")
         }

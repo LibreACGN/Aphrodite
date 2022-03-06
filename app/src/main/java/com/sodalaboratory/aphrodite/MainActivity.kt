@@ -2,10 +2,9 @@ package com.sodalaboratory.aphrodite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.sodalaboratory.aphrodite.ui.PersonListFragment
 
-private const val TAG = "TEST"
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -20,9 +20,11 @@
 **目前处于开发完善阶段，可通过源码自行构建安装包。**
 
 
-### 项目结构
+### 项目结构 & 贡献
 
 项目采用 MVVM 架构，[主目录](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite) 下的 [ui](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/ui) 包内包括了视图控制和 viewmodel 代码；[data](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/data) 包括数据库操作和数据模型代码；[utils](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/utils) 包内是一些工具类。
+
+自己精力有限，随时欢迎提 pr | issue 帮助改进软件。
 
 
 

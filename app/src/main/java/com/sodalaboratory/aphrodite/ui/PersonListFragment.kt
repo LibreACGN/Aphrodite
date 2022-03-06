@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.sodalaboratory.aphrodite.AphroditeApplication
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.data.model.Person
+import com.sodalaboratory.aphrodite.utils.LogUtil
 import com.sodalaboratory.aphrodite.utils.showToast
 
 private const val TAG = "TEST"
@@ -21,8 +22,6 @@ class PersonListFragment : Fragment() {
 
     private lateinit var adapter: PersonAdapter
     private lateinit var personListRecyclerView: RecyclerView
-    // 测试
-    private val personList = mutableListOf<Person>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,15 +41,17 @@ class PersonListFragment : Fragment() {
 
         // 设置 RecyclerView 布局
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
-        val layoutManager = LinearLayoutManager(AphroditeApplication.context)
+        val layoutManager = LinearLayoutManager(activity)
         personListRecyclerView.layoutManager = layoutManager
-        adapter = PersonAdapter(personList)
+        adapter = PersonAdapter(personListViewModel.personList)
         personListRecyclerView.adapter = adapter
+        Log.d("DEBUG", "adapter set ok")
 
         // 绑定监控人数变化
         personListViewModel.personCountLiveData.observe(viewLifecycleOwner) {
             // 增加
             adapter.notifyItemInserted(0)
+            LogUtil.d("DEBUG", "observe data changed")
         }
     }
 

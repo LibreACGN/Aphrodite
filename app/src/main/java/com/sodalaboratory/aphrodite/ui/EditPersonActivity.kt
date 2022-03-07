@@ -8,12 +8,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.Key
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.utils.FileUtil
 import com.sodalaboratory.aphrodite.utils.LogUtil
 import com.sodalaboratory.aphrodite.utils.showToast
-import java.io.File
 
 class EditPersonActivity : AppCompatActivity() {
     // 照片 名字 生日
@@ -77,13 +77,15 @@ class EditPersonActivity : AppCompatActivity() {
             when (requestCode) {
                 // 图片选取
                 2404 -> {
+                    // 待改进 用 launcher 启动活动
                     // RESULT_OK 则 Uri 不为空
                     if (resultCode == RESULT_OK) {
                         val imageUri = data?.data!!
                         LogUtil.d("exist", requestCode.toString())
                         FileUtil.saveDefaultImage(imageUri.path!!)
                         // 加载暂存的图片
-                        Glide.with(this).load(imageUri.path).into(findViewById(R.id.person_image_preview))
+                        Glide.with(this).load(imageUri.path)
+                                                .into(findViewById(R.id.person_image_preview))
                         isImageUriSet = true
                     }
                 }

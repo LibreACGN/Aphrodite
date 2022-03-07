@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.Key
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.utils.FileUtil

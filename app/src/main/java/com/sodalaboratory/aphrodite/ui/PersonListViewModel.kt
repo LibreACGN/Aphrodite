@@ -5,6 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.sodalaboratory.aphrodite.data.db.AphroditeAppDatabase
 import com.sodalaboratory.aphrodite.data.model.Person
 import com.sodalaboratory.aphrodite.data.model.PersonDao
+import com.sodalaboratory.aphrodite.utils.FileUtil
+import java.text.FieldPosition
 import kotlin.concurrent.thread
 
 class PersonListViewModel : ViewModel() {
@@ -28,6 +30,21 @@ class PersonListViewModel : ViewModel() {
             personDao.insertPerson(person)
             personCountLiveData.postValue(personList.size)
         }
+    }
 
+    fun deletePerson(position: Int) {
+        // 清除
+        thread {
+            // 清除数据库
+            personDao.deletePerson(personList[position])
+            // 修改值
+            personCountLiveData.postValue(personList.size - 1)
+            // 清除头像文件
+            FileUtil.delete(personList[position].name)
+            // 清除列表
+            personList.removeAt(position)
+
+        }
+        //
     }
 }

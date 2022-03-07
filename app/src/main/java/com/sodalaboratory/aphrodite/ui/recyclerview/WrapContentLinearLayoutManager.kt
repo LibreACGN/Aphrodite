@@ -1,4 +1,4 @@
-package com.sodalaboratory.aphrodite.ui
+package com.sodalaboratory.aphrodite.ui.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet

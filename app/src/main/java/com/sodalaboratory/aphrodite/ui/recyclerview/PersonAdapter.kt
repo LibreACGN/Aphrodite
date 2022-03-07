@@ -1,4 +1,4 @@
-package com.sodalaboratory.aphrodite.ui
+package com.sodalaboratory.aphrodite.ui.recyclerview
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.sodalaboratory.aphrodite.AphroditeApplication
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.data.model.Person
 

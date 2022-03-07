@@ -31,9 +31,10 @@ class EditPersonActivity : AppCompatActivity() {
 
         selectImageButton.setOnClickListener {
             // 选择图片
+            // 图片大小控制在 4mb 减轻压缩负担
             ImagePicker.with(this)
                 .crop()
-                .compress(1024)
+                .compress(4096)
                 .start()
         }
 

@@ -32,5 +32,7 @@
 
 自己精力有限，且能力也有限，随时欢迎提 pr | issue 帮助改进软件。这是我的第一个真正意义上可用的安卓应用（而不是之前做的许多学习 Demo），我将持续更新它，让它变得更好，并在将来的某个时候上线各大应用市场。
 
+### Special Thanks
+@CaptainYukinoshitaHachiman, 其所属的 [Future Application Laboratory](https://github.com/future-application-laboratory) 的 iOS / WatchOS 项目 [birthreminder](https://github.com/future-application-laboratory/BirthReminder) 给了我最初的启蒙，并让我从大一开始持续地学习 Android 开发，期待完成一款 Android 类似应用。
 
 

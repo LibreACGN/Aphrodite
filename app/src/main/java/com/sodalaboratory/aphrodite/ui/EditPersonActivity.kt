@@ -2,12 +2,16 @@ package com.sodalaboratory.aphrodite.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import com.bumptech.glide.Glide
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.sodalaboratory.aphrodite.AphroditeApplication
 import com.sodalaboratory.aphrodite.R
 import com.sodalaboratory.aphrodite.utils.FileUtil
 import com.sodalaboratory.aphrodite.utils.LogUtil
@@ -68,6 +72,17 @@ class EditPersonActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
+            Configuration.UI_MODE_NIGHT_MASK
+        )) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFFFFFFF")))
+            }
+        }
+    }
 
     // 处理图片回调
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

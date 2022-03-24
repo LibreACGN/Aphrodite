@@ -3,6 +3,9 @@ package com.sodalaboratory.aphrodite.ui
 import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
 import androidx.activity.result.ActivityResultLauncher
@@ -136,6 +139,20 @@ class PersonListFragment() : Fragment() {
                     personListViewModel.addPerson(
                         Person(name = name!!, birthday = birthday!!, imagePath = imagePath!!))
                 }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        LogUtil.d("PersonListFragment", "onResume() called.")
+        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
+            Configuration.UI_MODE_NIGHT_MASK
+        )) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                LogUtil.d("PersonListFragment", "UI_MODE_NIGHT_YES")
+                val toolbar = requireView().findViewById<MaterialToolbar>(R.id.toolbar)
+                toolbar.setBackgroundColor(resources.getColor(R.color.black))
             }
         }
     }

@@ -5,7 +5,9 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="..\:/code/AndroidStudioProjects/Aphrodite/app/src/main/res/layout/activity_main.xml" value="0.23802083333333332" />
+        <entry key="..\:/code/AndroidStudioProjects/Aphrodite/app/src/main/res/layout/fragment_person_list.xml" value="0.23802083333333332" />
         <entry key="..\:/code/AndroidStudioProjects/Aphrodite/app/src/main/res/layout/person_card_view.xml" value="0.4" />
+        <entry key="..\:/code/AndroidStudioProjects/Aphrodite/app/src/main/res/menu/actionbar.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/drawable/outline_account_circle_24.xml" value="0.185" />
         <entry key="app/src/main/res/drawable/person_add_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_edit_person.xml" value="0.1" />

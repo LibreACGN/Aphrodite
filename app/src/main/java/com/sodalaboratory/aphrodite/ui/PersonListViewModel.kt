@@ -44,6 +44,5 @@ class PersonListViewModel : ViewModel() {
             personList.removeAt(position)
 
         }
-        //
     }
 }

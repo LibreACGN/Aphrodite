@@ -6,7 +6,6 @@ import com.sodalaboratory.aphrodite.data.db.AphroditeAppDatabase
 import com.sodalaboratory.aphrodite.data.model.Person
 import com.sodalaboratory.aphrodite.data.model.PersonDao
 import com.sodalaboratory.aphrodite.utils.FileUtil
-import java.text.FieldPosition
 import kotlin.concurrent.thread
 
 class PersonListViewModel : ViewModel() {

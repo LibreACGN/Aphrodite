@@ -5,8 +5,9 @@
 [Aphrodite（阿佛洛狄忒）](https://en.wikipedia.org/wiki/Aphrodite) 是希腊神话中爱与美的女神。
 本应用的基础功能是人物的生日记录，可以设置人物的头像、姓名、出生日期信息，以列表形式展现。
 <p align="center">
-<img src=".\images\screen_shot_huawei_nova4.PNG" width=250/>
-<p />
+<img src=".\images\screen_shot_light.png" width=250/>
+<img src=".\images\screen_shot_night.png" width=250/>
+<p/>
 
 
 ### 已知问题 | 待改进

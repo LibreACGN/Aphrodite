@@ -5,16 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <include
         android:id="@+id/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/material_toolbar"
+        />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_200"
-        android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:titleCentered="true" />
+        android:text="@string/index"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/person_list_recycler_view"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

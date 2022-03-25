@@ -4,14 +4,16 @@ import android.app.Activity.RESULT_OK
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -35,16 +37,12 @@ class PersonListFragment() : Fragment() {
 
     private lateinit var adapter: PersonAdapter
     private lateinit var personListRecyclerView: RecyclerView
+    private lateinit var moreButton: ImageView
+    private lateinit var addPersonButton: ImageView
+
     private var position = 0
 
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        // 需要设置 optionMenu
-        setHasOptionsMenu(true)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,11 +53,34 @@ class PersonListFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 检查当前是否是黑暗模式
+//        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
+//            Configuration.UI_MODE_NIGHT_MASK
+//        )) {
+//            Configuration.UI_MODE_NIGHT_YES -> {
+//                LogUtil.d("PersonListFragment", "UI_MODE_NIGHT_YES")
+//                val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
+//                toolbar.setBackgroundColor(resources.getColor(R.color.black))
+//                // 设置背景颜色
+//                val layout = view.findViewById<LinearLayout>(R.id.person_info_linearlayout)
+//                layout.setBackgroundColor(ContextCompat.getColor(view.context, R.color.black_descend))
+//            }
+//        }
         // 初始化图片存储文件夹
         FileUtil.init()
         // 设置顶部 toolbar
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+
+        // 设置图片按钮
+        moreButton = view.findViewById(R.id.more_button)
+        addPersonButton = view.findViewById(R.id.add_person_button)
+
+        // 添加人物
+        addPersonButton.setOnClickListener {
+            val intent = Intent(AphroditeApplication.context, EditPersonActivity::class.java)
+            resultLauncher.launch(intent)
+        }
 
         // 设置 RecyclerView 布局
         personListRecyclerView = view.findViewById(R.id.person_list_recycler_view)
@@ -69,6 +90,17 @@ class PersonListFragment() : Fragment() {
         adapter = PersonAdapter(view.context, personListViewModel.personList)
         personListRecyclerView.adapter = adapter
         LogUtil.d("DEBUG", "adapter set ok")
+
+        // 夜间模式适配
+        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
+            Configuration.UI_MODE_NIGHT_MASK
+        )) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                LogUtil.d("PersonListFragment", "UI_MODE_NIGHT_YES")
+                // 设置工具栏颜色
+                toolbar.setBackgroundColor(ContextCompat.getColor(view.context,R.color.black))
+            }
+        }
 
         // 绑定监控人数变化
         personListViewModel.personCountLiveData.observe(viewLifecycleOwner) { newValue ->
@@ -90,7 +122,6 @@ class PersonListFragment() : Fragment() {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean = false
-                // }
 
             // 滑动删除
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
@@ -113,13 +144,7 @@ class PersonListFragment() : Fragment() {
             }
 
         }
-        val helper = ItemTouchHelper(callback).attachToRecyclerView(personListRecyclerView)
-    }
-
-    // 顶部工具栏加载
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.actionbar, menu)
+        ItemTouchHelper(callback).attachToRecyclerView(personListRecyclerView)
     }
 
     override fun onAttach(context: Context) {
@@ -128,7 +153,6 @@ class PersonListFragment() : Fragment() {
         // 处理返回的人物信息
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
-                // There are no request codes
                 val data: Intent? = result.data
                 "success".showToast()
                 thread() {
@@ -141,31 +165,5 @@ class PersonListFragment() : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        LogUtil.d("PersonListFragment", "onResume() called.")
-        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
-            Configuration.UI_MODE_NIGHT_MASK
-        )) {
-            Configuration.UI_MODE_NIGHT_YES -> {
-                LogUtil.d("PersonListFragment", "UI_MODE_NIGHT_YES")
-                val toolbar = requireView().findViewById<MaterialToolbar>(R.id.toolbar)
-                toolbar.setBackgroundColor(resources.getColor(R.color.black))
-            }
-        }
-    }
-
-    // 工具栏按钮 + 点击事件
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // 准备启动活动
-        when (item.itemId) {
-            R.id.aphrodite_add -> {
-                val intent = Intent(AphroditeApplication.context, EditPersonActivity::class.java)
-                resultLauncher.launch(intent)
-            }
-        }
-        return true
     }
 }

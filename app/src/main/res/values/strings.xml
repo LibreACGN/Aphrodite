@@ -6,5 +6,6 @@
     <string name="person_birthday_hint">input birthday here</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="index">Index</string>
 
 </resources>

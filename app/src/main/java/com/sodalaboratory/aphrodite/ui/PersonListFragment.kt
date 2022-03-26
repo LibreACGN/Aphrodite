@@ -52,21 +52,7 @@ class PersonListFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // 检查当前是否是黑暗模式
-//        when (AphroditeApplication.context.resources?.configuration?.uiMode?.and(
-//            Configuration.UI_MODE_NIGHT_MASK
-//        )) {
-//            Configuration.UI_MODE_NIGHT_YES -> {
-//                LogUtil.d("PersonListFragment", "UI_MODE_NIGHT_YES")
-//                val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)
-//                toolbar.setBackgroundColor(resources.getColor(R.color.black))
-//                // 设置背景颜色
-//                val layout = view.findViewById<LinearLayout>(R.id.person_info_linearlayout)
-//                layout.setBackgroundColor(ContextCompat.getColor(view.context, R.color.black_descend))
-//            }
-//        }
-        // 初始化图片存储文件夹
+        
         FileUtil.init()
         // 设置顶部 toolbar
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)

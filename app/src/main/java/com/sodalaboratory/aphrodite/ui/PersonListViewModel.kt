@@ -42,7 +42,7 @@ class PersonListViewModel : ViewModel() {
             FileUtil.delete(personList[position].name)
             // 清除列表
             personList.removeAt(position)
-
+            
         }
     }
 }

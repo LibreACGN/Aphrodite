@@ -52,7 +52,7 @@ class PersonListFragment() : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        
+
         FileUtil.init()
         // 设置顶部 toolbar
         val toolbar = view.findViewById<MaterialToolbar>(R.id.toolbar)

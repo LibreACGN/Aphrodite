@@ -1,14 +1,14 @@
 ## Aphrodite
 
-
 ### 介绍
+
 [Aphrodite（阿佛洛狄忒）](https://en.wikipedia.org/wiki/Aphrodite) 是希腊神话中爱与美的女神。
 本应用的基础功能是人物的生日记录，可以设置人物的头像、姓名、出生日期信息，以列表形式展现。
+
 <p align="center">
 <img src=".\images\screen_shot_light.png" width=250/>
 <img src=".\images\screen_shot_night.png" width=250/>
 <p/>
-
 
 ### 已知问题 | 待改进
 
@@ -29,6 +29,15 @@
 待改进的问题还有许多。
 
 
+
+## 提示
+
+**从不要使用从 dev 分支构建的 apk。** dev 分支是 **不同于 main 发布分支的开发分支。**
+
+项目的 [Releases](https://github.com/sodalaboratory/Aphrodite/releases) 是从 main 分支构建的。
+
+
+
 ### 项目结构 & 贡献
 
 项目采用 MVVM 架构，[主目录](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite) 下的 [ui](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/ui) 包内包括了视图控制和 viewmodel 代码；[data](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/data) 包括数据库操作和数据模型代码；[utils](https://github.com/sodalaboratory/Aphrodite/tree/main/app/src/main/java/com/sodalaboratory/aphrodite/utils) 包内是一些工具类。
@@ -36,6 +45,9 @@
 自己精力有限，且能力也有限，随时欢迎提 pr | issue 帮助改进软件。这是我的第一个真正意义上可用的安卓应用（而不是之前做的许多学习 Demo），我将持续更新它，让它变得更好，并在将来的某个时候上线各大应用市场。
 
 ### Special Thanks
+
 [Cap.雪ノ下八幡](https://github.com/CaptainYukinoshitaHachiman)，其所属的 [Future Application Laboratory](https://github.com/future-application-laboratory) 开发的 iOS / WatchOS 项目 [birthreminder](https://github.com/future-application-laboratory/BirthReminder) 给了我最初的启蒙，并让我从大一开始在业余时间学习 Android 开发，期待完成一款 Android 类似应用。虽然因为各种问题时断时续，但如今终有一点点成绩。非常感谢。
 
 
+
+[《第一行代码》](https://www.ituring.com.cn/book/2744/) 的作者 [guolindev](https://github.com/guolindev)，是他带领我走进了 Android 开发的大门。

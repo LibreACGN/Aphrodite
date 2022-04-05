@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.sodalaboratory.aphrodite.ui.PersonListFragment
+import com.sodalaboratory.aphrodite.ui.configuration.ConfigurationFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // set adapter for ViewPager
-        mViewPager = findViewById<ViewPager2>(R.id.viewpager)
+        mViewPager = findViewById(R.id.viewpager)
         val viewPagerAdapter = ScreenSlidePagerAdapter(this)
         mViewPager.adapter = viewPagerAdapter
     }
@@ -34,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             when (position) {
                 // PersonListFragment
                 0 -> PersonListFragment()
+
+                // ConfigurationFragment
+                1 -> ConfigurationFragment()
                 else -> Fragment()
             }
     }

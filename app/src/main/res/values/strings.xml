@@ -7,5 +7,6 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="index">Index</string>
+    <string name="app_version">v0.1</string>
 
 </resources>
